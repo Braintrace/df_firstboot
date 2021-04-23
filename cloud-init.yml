@@ -1,0 +1,5 @@
+#cloud-config
+runcmd:
+ - wget https://raw.githubusercontent.com/Braintrace/df_firstboot/main/dfinit.sh
+ - chmod 755 dfinit.sh
+ - ./dfinit.sh
