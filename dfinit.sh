@@ -4,12 +4,6 @@
 # Date : 4/23/2021
 # Description : Dragonfly Firstboot, initial connectivity.
 
-# Ensure user is root
-if [[ $EUID > 0 ]] ; then
-    echo "You must be root to run this script!"
-    exit 1
-fi
-
 # Variables
 UUID_REGEX="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
 HostName="https://bd.braintrace.com"
@@ -24,14 +18,12 @@ ConnectionInfo="{
 }"
 ServiceConfig="[Unit]
 Description=The Remotely agent used for remote access.
-
 [Service]
 WorkingDirectory=/usr/local/bin/Remotely/
 ExecStart=/usr/local/bin/Remotely/Remotely_Agent
 Restart=always
 StartLimitIntervalSec=0
 RestartSec=10
-
 [Install]
 WantedBy=graphical.target"
 
