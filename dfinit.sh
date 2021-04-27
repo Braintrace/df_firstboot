@@ -30,6 +30,7 @@ WantedBy=graphical.target"
 # Change Hostname to UUID.
 echo "Changing hostname to system id"
 echo "$GUID" > /etc/hostname
+sed -i -E "s/127.0.0.1 localhost/127.0.0.1 localhost $GUID/g" /etc/hosts
 
 # Installing packages needed for initial connectivity.
 wget -q https://packages.microsoft.com/config/ubuntu/$UbuntuVersion/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
